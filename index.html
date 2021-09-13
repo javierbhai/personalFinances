@@ -4,53 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <title>Personal Finances</title>
 </head>
 <body>
-    <article class="budget_resume">
-        <article class="day">
-            <div class="day_header">
-                <p class="day_header-title">Today</p>
-                <p id="dayTotal" class="day_header-dayTotal">249</p>
-            </div>
-            <ul class="day_list">
-                <li class="day_list-item">
-                    <p class="day_list-item-category">Food</p>
-                    <span class="day_list-item-ammount">-102</span>
-                </li>
-                <li class="day_list-item">
-                    <p class="day_list-item-category">Coffee</p>
-                    <span class="day_list-item-ammount">-21</span>
-                </li>
-                <li class="day_list-item">
-                    <p class="day_list-item-category">Coctels</p>
-                    <span class="day_list-item-ammount">-143</span>
-                </li>
-            </ul>
-        </article>
-        <article class="day">
-            <div class="day_header">
-                <p class="day_header-title">Yesterday</p>
-                <p id="dayTotal" class="day_header-dayTotal">249</p>
-            </div>
-            <ul class="day_list">
-                <li class="day_list-item">
-                    <p class="day_list-item-category">Home</p>
-                    <span class="day_list-item-ammount">-2000</span>
-                </li>
-                <li class="day_list-item">
-                    <p class="day_list-item-category">Coffee</p>
-                    <span class="day_list-item-ammount">-21</span>
-                </li>
-            </ul>
-        </article>
-    </article>
-    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <main>
+        <section class="budget_resume mt-5">
+            <article class="day">
+                <div class="day_header">
+                    <p class="day_header-title">today</p>
+                    <p id="dayTotal" class="day_header-dayTotal value">452.23</p>
+                </div>
+                <ul class="day_list">
+                    <li class="day_list-item">
+                        <div class="day_list-item-category">
+                            <p class="day_list-item-category-icon">🥗</p>
+                        </div>
+                        <span class="day_list-item-amount value">-102</span>
+                    </li>
+                    <li class="day_list-item">
+                        <div class="day_list-item-category">
+                            <p class="day_list-item-category-icon">🥙</p>
+                        </div>
+                        <span class="day_list-item-amount value">-21</span>
+                    </li>
+                    <li class="day_list-item">
+                        <div class="day_list-item-category">
+                            <p class="day_list-item-category-icon">🍹</p>
+                            <p class="day_list-item-category-text">Coctels</p>
+                        </div>
+                        <span class="day_list-item-amount value">-143</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="day">
+                <div class="day_header">
+                    <p class="day_header-title">yesterday</p>
+                    <p id="dayTotal" class="day_header-dayTotal value">249</p>
+                </div>
+                <ul class="day_list">
+                    <li class="day_list-item">
+                        <div class="day_list-item-category">
+                            <p class="day_list-item-category-icon">🏡</p>
+                        </div>
+                        <span class="day_list-item-amount value">2000</span>
+                    </li>
+                    <li class="day_list-item">
+                        <div class="day_list-item-category">
+                            <p class="day_list-item-category-icon">🥙</p>
+                        </div>
+                        <span class="day_list-item-amount value">-21</span>
+                    </li>
+                    <li class="day_list-item">
+                        <div class="day_list-item-category">
+                            <p class="day_list-item-category-icon">🍹</p>
+                        </div>
+                        <span class="day_list-item-amount value">-143</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="input">
+                <div class="input_values">
+                    <p class="input_values-amount value my-0">102.40</p>
+                    <p class="input_values-icon my-0">🥙</p>
+                </div>
+                <p class="input_plus">+</p>
+            </article>
+        </section>
+    </main>
     <script src="./assets/js/app.js"></script>
 </body>
 </html>

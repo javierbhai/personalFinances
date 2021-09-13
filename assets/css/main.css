@@ -1,3 +1,82 @@
+body{
+    background-color: #EAEAEA;
+}
+main{
+    display: flex;
+    justify-content: center;
+}
 .budget_resume{
-    
+    background-color: black;
+    border-radius: 60px;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 30px 30px 30px;
+    width: 360px;
+}
+.day_header, .day_list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.day_header-dayTotal{
+    color: #868686;
+    font-size: 15px;
+}
+.day_header-title{
+    font-size: 30px;
+}
+.day_list{
+    padding: 0;
+}
+.day_list-item-category{
+    display: flex;
+    align-items: flex-end;
+}
+.day_list-item-category-icon{
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+}
+.day_list-item-category-text {
+    font-size: 15px;
+    margin: 0 0 5px 15px;
+    padding: 0;
+}
+.day_list-item-category{
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+}
+.value::before{
+    content: "$"
+}
+.input{
+    background-color: #FFF;
+    color: #000;
+    border-radius: 80px;
+    width: 100%;
+    display: flex;
+    padding: 15px 25px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+.input_values{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.input_values-amount{
+    font-size: 33px;
+    font-weight: 400;
+}
+.input_values-icon{
+    font-size: 40px;
+    margin-left: 20px;
+}
+.input_plus{
+    font-size: 40px;
+    margin-bottom: 5px;
 }
