@@ -19,7 +19,7 @@
                     <p class="day_header-title">today</p>
                     <p id="dayTotal" class="day_header-dayTotal value">452.23</p>
                 </div>
-                <ul class="day_list">
+                <ul id="ulToday" class="day_list">
                     <li class="day_list-item">
                         <div class="day_list-item-category">
                             <p class="day_list-item-category-icon">🥗</p>
@@ -35,7 +35,7 @@
                     <li class="day_list-item">
                         <div class="day_list-item-category">
                             <p class="day_list-item-category-icon">🍹</p>
-                            <p class="day_list-item-category-text">Coctels</p>
+                            <!-- <p class="day_list-item-category-text">Coctels</p> -->
                         </div>
                         <span class="day_list-item-amount value">-143</span>
                     </li>
@@ -69,13 +69,17 @@
             </article>
             <article class="input">
                 <div class="input_values">
-                    <p class="input_values-amount value my-0">102.40</p>
-                    <p class="input_values-icon my-0">🥙</p>
+                    <form id="mainForm">
+                        <span class="input_values-prefix">$</span>
+                        <input id="mainInput" class="input_values-input" type="number" placeholder="e.g. 120" required>
+                        <button class="input_values-icon my-0" onclick="onSubmit(event)" type="submit">🥙</button>
+                    </form>
                 </div>
                 <p class="input_plus">+</p>
             </article>
         </section>
     </main>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
