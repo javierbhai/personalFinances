@@ -1,3 +1,4 @@
+//1. selector Jquery
 const selector = document.getElementById("mainInput");
 
 class Entry {
@@ -16,10 +17,10 @@ const valuesList = {
     fun: []
 }
 
-const outcomesTotal = []
+let getOutcomeStorage = JSON.parse(localStorage.getItem('outcomes')) || [];
+const outcomesTotal = [...getOutcomeStorage]
 
 const handleAdd = outcomesTotal => {
-    // Tarea 3 Esta funcion genera una operación basada en datos dados por el cliente se imprimen en el lateral
     let added = 0;
     for (let i = 0; i < outcomesTotal.length; i++) {
         const element = outcomesTotal[i];
@@ -29,25 +30,36 @@ const handleAdd = outcomesTotal => {
     add.textContent = added;
 }
 
+const persistInfo = info => {
+    localStorage.setItem('outcomes', JSON.stringify(info))
+}
+
 const handleOutcomes = entry => {
-    // Tarea 2 Esta funcion ordena las entradas de forma acsendente
-
     outcomesTotal.push(entry);
-    outcomesTotal.sort()
-
-    console.log('Array de gastos ordenados', outcomesTotal)
     handleAdd(outcomesTotal)
+    persistInfo(outcomesTotal)
 }
 
 const handleNewEntry = value => {
-    // Tarea 1 Incorporar array a mi proyecto
     const date = new Date()
     const entry = new Entry(value, date);
-
     valuesList.food.push(entry)
-
+    persistInfo(valuesList.food)
     entry.report()
 }
+
+const printer = arrToPrint => {
+    arrToPrint.map((el)=>{
+        const newLiItem = document.createElement("li");
+        newLiItem.setAttribute('class','day_list-item');
+        //2. selector - uso de Jquery
+        $('#ulToday').append(newLiItem);
+        newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>🥙</p></div><span class='day_list-item-amount value'>${el}</span>`
+    })
+    console.log(arrToPrint)
+}
+
+printer(outcomesTotal)
 
 const onSubmit = e => {
 
@@ -56,13 +68,10 @@ const onSubmit = e => {
         e.stopPropagation();
     } else {
         e.preventDefault();
-
-        const newLiItem = document.createElement("li");
-        newLiItem.setAttribute('class','day_list-item');
-        document.getElementById('ulToday').appendChild(newLiItem);
-        newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>🥙</p></div><span class='day_list-item-amount value'>${userInputValue}</span>`
         handleNewEntry(userInputValue)
         handleOutcomes(userInputValue)
-        document.getElementById('mainForm').reset();
+        printer(outcomesTotal)
+        //3. Selector y Reset del Jquery
+        $('#mainForm').get(0).reset();
     }
 }
