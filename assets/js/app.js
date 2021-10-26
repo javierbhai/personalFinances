@@ -39,7 +39,7 @@ const handleInfo = (value, category) => {
     const newElement = new Entry(value, category)
     valuesList.push(newElement)
     persistInfo(valuesList)
-    printer(valuesList)
+    singlePrinter(value, category)
 }
 
 const printer = arrToPrint => {
@@ -50,6 +50,13 @@ const printer = arrToPrint => {
         $('#ulToday').append(newLiItem);
         newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>${el.category}</p></div><span class='day_list-item-amount value'>${el.value}</span>`
     })
+}
+
+const singlePrinter = (value, category) => {
+        const newLiItem = document.createElement("li");
+        newLiItem.setAttribute('class','day_list-item');
+        $('#ulToday').append(newLiItem);
+        newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>${category}</p></div><span class='day_list-item-amount value'>${value}</span>`
 }
 
 printer(valuesList)
