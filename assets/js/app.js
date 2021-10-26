@@ -42,11 +42,13 @@ const handleOutcomes = entry => {
 
 const handleNewEntry = value => {
     const date = new Date()
-    const entry = new Entry(value, date);
+    const dateFormated = Date.parse(date)
+    const entry = new Entry(value, dateFormated);
     valuesList.food.push(entry)
     persistInfo(valuesList.food)
     entry.report()
 }
+
 
 const printer = arrToPrint => {
     arrToPrint.map((el)=>{
@@ -56,7 +58,6 @@ const printer = arrToPrint => {
         $('#ulToday').append(newLiItem);
         newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>🥙</p></div><span class='day_list-item-amount value'>${el}</span>`
     })
-    console.log(arrToPrint)
 }
 
 printer(outcomesTotal)
@@ -71,7 +72,6 @@ const onSubmit = e => {
         handleNewEntry(userInputValue)
         handleOutcomes(userInputValue)
         printer(outcomesTotal)
-        //3. Selector y Reset del Jquery
         $('#mainForm').get(0).reset();
     }
 }
