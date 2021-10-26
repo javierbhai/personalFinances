@@ -1,77 +1,55 @@
-//1. selector Jquery
-const selector = document.getElementById("mainInput");
+// Selectors
+const input = document.getElementById("mainInput");
+const select = document.getElementById("mainSelect");
 
+// Getting Persistence
+let getOutcomeStorage = JSON.parse(localStorage.getItem('outcomes')) || [];
+let valuesList = [...getOutcomeStorage]
+
+// Info Abstraction
 class Entry {
-    constructor(value, date) {
+    constructor(value, category) {
         this.value = value;
-        this.date   = date;
+        this.category = category;
     }
     report(){
-        console.log(`Fui creada el ${this.date} con un valor de $${this.value}`);
+        console.log(`Fui creada el ${this.category} con un valor de $${this.value}`);
     }
+};
 
-}
-const valuesList = {
-    food: [],
-    rent: [],
-    fun: []
-}
-
-let getOutcomeStorage = JSON.parse(localStorage.getItem('outcomes')) || [];
-const outcomesTotal = [...getOutcomeStorage]
-
-const handleAdd = outcomesTotal => {
-    let added = 0;
-    for (let i = 0; i < outcomesTotal.length; i++) {
-        const element = outcomesTotal[i];
-        added += parseInt(element)
-    }
-    let add = document.getElementById('add')
-    add.textContent = added;
-}
-
-const persistInfo = info => {
-    localStorage.setItem('outcomes', JSON.stringify(info))
-}
-
-const handleOutcomes = entry => {
-    outcomesTotal.push(entry);
-    handleAdd(outcomesTotal)
-    persistInfo(outcomesTotal)
-}
-
-const handleNewEntry = value => {
-    const date = new Date()
-    const entry = new Entry(value, date);
-    valuesList.food.push(entry)
-    persistInfo(valuesList.food)
-    entry.report()
-}
-
-const printer = arrToPrint => {
-    arrToPrint.map((el)=>{
-        const newLiItem = document.createElement("li");
-        newLiItem.setAttribute('class','day_list-item');
-        //2. selector - uso de Jquery
-        $('#ulToday').append(newLiItem);
-        newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>🥙</p></div><span class='day_list-item-amount value'>${el}</span>`
-    })
-    console.log(arrToPrint)
-}
-
-printer(outcomesTotal)
-
-const onSubmit = e => {
-
-    const userInputValue = selector.value
+// Handle submit info
+const handleSubmit = e => {
+    const userInputValue = input.value
+    const userSelectValue = select.value
     if (userInputValue === "") {
         e.stopPropagation();
     } else {
         e.preventDefault();
-        handleNewEntry(userInputValue)
-        handleOutcomes(userInputValue)
-        printer(outcomesTotal)
-        //3. Selector y Reset del Jquery
+        handleInfo(userInputValue, userSelectValue)
         $('#mainForm').get(0).reset();
     }
 }
+
+// Store info function
+const persistInfo = info => {
+    localStorage.setItem('outcomes', JSON.stringify(info))
+}
+
+const handleInfo = (value, category) => {  
+    const newElement = new Entry(value, category)
+    valuesList.push(newElement)
+    persistInfo(valuesList)
+    printer(valuesList)
+}
+
+const printer = arrToPrint => {
+    arrToPrint.map((el)=>{
+        console.log(el)
+        const newLiItem = document.createElement("li");
+        newLiItem.setAttribute('class','day_list-item');
+        $('#ulToday').append(newLiItem);
+        newLiItem.innerHTML = `<div class='day_list-item-category'><p class='day_list-item-category-icon'>${el.category}</p></div><span class='day_list-item-amount value'>${el.value}</span>`
+    })
+}
+
+printer(valuesList)

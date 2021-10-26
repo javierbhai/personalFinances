@@ -76,10 +76,14 @@
                     <form id="mainForm">
                         <span class="input_values-prefix">$</span>
                         <input id="mainInput" class="input_values-input" type="number" placeholder="e.g. 120" required>
-                        <button class="input_values-icon my-0" onclick="onSubmit(event)" type="submit">🥙</button>
+                        <select id="mainSelect" name="select" class="select">
+                            <option value="🥙" selected >🥙</option>
+                            <option value="🍹">🍹</option>
+                            <option value="🏡">🏡</option>
+                        </select>
+                        <button class="input_values-icon my-0" onclick="handleSubmit(event)" type="submit"></button>
                     </form>
                 </div>
-                <p class="input_plus">+</p>
             </article>
         </section>
     </main>

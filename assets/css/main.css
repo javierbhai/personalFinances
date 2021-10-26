@@ -75,10 +75,11 @@ main{
     font-weight: 400;
 }
 .input_values-input{
-    border: 0;
+    border: none;
     font-size: 33px;
     font-weight: 400;
     width: 175px;
+    outline: none;
 }
 .input_values-icon{
     font-size: 40px;
@@ -90,4 +91,10 @@ main{
 .input_plus{
     font-size: 40px;
     margin-bottom: 5px;
+}
+
+.select{
+    border: none;
+    outline: none;
+    font-size: 40px;
 }
